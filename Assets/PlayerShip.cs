@@ -16,7 +16,6 @@ public class PlayerShip : MonoBehaviour
     //Speed Multipliers
     public float speedMult = 1f;
     public float speedMultAngle = 0.5f;
-    [SerializeField]
     float speedRollMultAngle = 0.05f;
 
 
@@ -40,6 +39,6 @@ public class PlayerShip : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playershipRB.AddForce(playershipRB.transform.TransformDirection(Vector3.forward) * verticalMove * speedMult, ForceMode.VelocityChange);
+        playershipRB.AddForce(speedMult * verticalMove * playershipRB.transform.TransformDirection(Vector3.forward), ForceMode.VelocityChange);
     }
 }
