@@ -29,8 +29,8 @@ public class PlayerShip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        verticalMove = Input.GetAxis("Vertical");
-        horizontalMove = Input.GetAxis("Horizontal");
+        verticalMove = Input.GetAxis("Horizontal");
+        horizontalMove = Input.GetAxis("Vertical");
         rollInput = Input.GetAxis("Roll");
 
         mouseInputX = Input.GetAxis("Mouse X");
@@ -39,6 +39,7 @@ public class PlayerShip : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playershipRB.AddForce(speedMult * verticalMove * playershipRB.transform.TransformDirection(Vector3.forward), ForceMode.VelocityChange);
+        playershipRB.AddForce(verticalMove * speedMult * playershipRB.transform.TransformDirection(Vector3.forward), ForceMode.VelocityChange);
+        playershipRB.AddForce(horizontalMove * speedMult * playershipRB.transform.TransformDirection(Vector3.right), ForceMode.VelocityChange);
     }
 }
