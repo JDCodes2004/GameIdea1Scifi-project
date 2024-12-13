@@ -40,6 +40,14 @@ public class PlayerShip : MonoBehaviour
     private void FixedUpdate()
     {
         playershipRB.AddForce(verticalMove * speedMult * playershipRB.transform.TransformDirection(Vector3.forward), ForceMode.VelocityChange);
+
         playershipRB.AddForce(horizontalMove * speedMult * playershipRB.transform.TransformDirection(Vector3.right), ForceMode.VelocityChange);
+
+        playershipRB.AddTorque(playershipRB.transform.right * speedMultAngle * mouseInputY * -1, ForceMode.VelocityChange);
+        playershipRB.AddTorque(playershipRB.transform.up * speedMultAngle * mouseInputX, ForceMode.VelocityChange);
+        
+        
+        playershipRB.AddTorque(playershipRB.transform.forward * speedRollMultAngle * rollInput, ForceMode.VelocityChange);
+
     }
 }
