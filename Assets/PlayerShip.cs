@@ -11,12 +11,10 @@ public class PlayerShip : MonoBehaviour
     public float horizontalMove;
     public float mouseInputX;
     public float mouseInputY;
-    public float rollInput;
 
     //Speed Multipliers
     public float speedMult = 1f;
     public float speedMultAngle = 0.5f;
-    float speedRollMultAngle = 0.05f;
 
 
     // Start is called before the first frame update
@@ -29,9 +27,8 @@ public class PlayerShip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        verticalMove = Input.GetAxis("Horizontal");
-        horizontalMove = Input.GetAxis("Vertical");
-        rollInput = Input.GetAxis("Roll");
+        verticalMove = Input.GetAxis("Vertical");
+        horizontalMove = Input.GetAxis("Horizontal");
 
         mouseInputX = Input.GetAxis("Mouse X");
         mouseInputY = Input.GetAxis("Mouse Y");
@@ -46,8 +43,6 @@ public class PlayerShip : MonoBehaviour
         playershipRB.AddTorque(playershipRB.transform.right * speedMultAngle * mouseInputY * -1, ForceMode.VelocityChange);
         playershipRB.AddTorque(playershipRB.transform.up * speedMultAngle * mouseInputX, ForceMode.VelocityChange);
         
-        
-        playershipRB.AddTorque(playershipRB.transform.forward * speedRollMultAngle * rollInput, ForceMode.VelocityChange);
 
     }
 }
