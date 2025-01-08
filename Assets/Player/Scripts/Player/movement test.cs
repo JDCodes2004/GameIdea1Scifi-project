@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -9,6 +10,8 @@ public class movementtest : MonoBehaviour
 {
     public Transform Ship;
     public Rigidbody Rbody;
+
+    public GameObject fireParticles;
 
 
     //speed
@@ -29,6 +32,15 @@ public class movementtest : MonoBehaviour
     {
         Turn();
         Thrust();
+
+        if (Input.GetKey("left shift"))
+        {
+            fireParticles.SetActive(true);
+        }
+        else
+        {
+            fireParticles.SetActive(false);
+        }
     }
 
     void Turn()
